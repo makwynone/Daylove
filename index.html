@@ -3,16 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Для тебя ❤️</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Валентинка для тебя ❤️</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Привет, [Зайка]! ❤️</h1>
-        <p>Ты самое прекрасное, что случилось со мной...</p>
-        <button id="heartButton">Нажми на меня!</button>
-        <div id="heartsContainer"></div>
+    <div class="valentine-card">
+        <!-- Сердечко -->
+        <div class="heart-shape" id="heartButton">
+            <!-- Лицевая сторона -->
+            <div class="heart-front">
+                <div class="heart-content">
+                    <h1>From Artem</h1>
+                    <p>to My Love</p>
+                </div>
+            </div>
+            <!-- Обратная сторона -->
+            <div class="heart-back">
+                <div class="heart-content">
+                    <p></p> <!-- Текст будет добавляться через JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Кнопка паузы -->
+        <div class="buttons">
+            <button id="pauseButton">⏸️</button>
+        </div>
     </div>
+
+    <!-- Аудио -->
+    <audio id="backgroundMusic" loop>
+        <source src="https://raw.githubusercontent.com/makwynone/Daylove/main/GONEFludd_-_BOYS_DONT_CRY_55408727.mp3" type="audio/mpeg">
+        Ваш браузер не поддерживает аудио.
+    </audio>
+    <audio id="heartSound">
+        <source src="https://www.soundjay.com/button/sounds/button-3.mp3" type="audio/mpeg">
+        Ваш браузер не поддерживает аудио.
+    </audio>
+
     <script src="script.js"></script>
 </body>
 </html>
