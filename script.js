@@ -14,7 +14,7 @@ const allPhrases = [
     "Ты самая вкусная чипсинка в пачке принглс!",
     "Люблю тебя больше, чем Шрек болото!",
     "Я рад, что мы вместе!",
-    "Детка, я конечно не шкатулка, но ты меня заводишь АХАХАХАХАХ!",
+    "Детка, я конечно не шкатулка, но ты меня заводишь АХАХАХАХАХ",
     "Спасибо, что ты есть!",
     "Ты самый дорогой мне человечек!",
     "Ты такая хорошенькая, милая, красивая, а еще у тебя голос прекрасный!",
@@ -49,6 +49,27 @@ function getRandomPhrase() {
     return phrase;
 }
 
+// Функция для создания маленьких сердечек
+function createFloatingHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('floating-heart');
+    heart.innerHTML = '❤️'; // Сердечко
+
+    // Случайные координаты для появления
+    const x = Math.random() * window.innerWidth;
+    const y = Math.random() * window.innerHeight;
+    heart.style.left = `${x}px`;
+    heart.style.top = `${y}px`;
+
+    // Добавляем сердечко на страницу
+    document.body.appendChild(heart);
+
+    // Удаляем сердечко через 4 секунды
+    setTimeout(() => {
+        heart.remove();
+    }, 4000);
+}
+
 // Функция для запуска музыки (только при первом нажатии)
 function startMusic() {
     if (!isMusicStarted) {
@@ -81,6 +102,11 @@ heartButton.addEventListener('click', () => {
         heartBackContent.textContent = getRandomPhrase();
     }
     isFlipped = !isFlipped;
+
+    // Создаем 10 маленьких сердечек
+    for (let i = 0; i < 10; i++) {
+        createFloatingHeart();
+    }
 });
 
 // Обработчик для кнопки паузы
