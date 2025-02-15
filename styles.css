@@ -1,0 +1,174 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    font-family: 'Dancing Script', cursive;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.valentine-card {
+    position: relative;
+    text-align: center;
+}
+
+/* Форма сердечка с объёмом */
+.heart-shape {
+    width: 250px;
+    height: 225px;
+    position: relative;
+    transform-style: preserve-3d; /* Для 3D-эффекта */
+    transition: transform 0.6s ease;
+    cursor: pointer;
+}
+
+/* Лицевая и обратная стороны */
+.heart-front,
+.heart-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Скрываем обратную сторону */
+    background: linear-gradient(145deg, #ff4a3d, #ff6f61);
+    border-radius: 15px 15px 0 0;
+    transform: rotate(-45deg);
+    box-shadow: 
+        0 10px 30px rgba(255, 74, 61, 0.5), /* Внешняя тень */
+        0 0 20px rgba(255, 74, 61, 0.3) inset; /* Внутренняя тень */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Левая и правая части сердца */
+.heart-front::before,
+.heart-front::after,
+.heart-back::before,
+.heart-back::after {
+    content: '';
+    width: 250px;
+    height: 225px;
+    background: linear-gradient(145deg, #ff4a3d, #ff6f61);
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: 
+        0 10px 30px rgba(255, 74, 61, 0.5), /* Внешняя тень */
+        0 0 20px rgba(255, 74, 61, 0.3) inset; /* Внутренняя тень */
+}
+
+.heart-front::before,
+.heart-back::before {
+    top: -112.5px; /* Половина высоты */
+    left: 0;
+}
+
+.heart-front::after,
+.heart-back::after {
+    top: 0;
+    left: 112.5px; /* Половина ширины */
+}
+
+/* Обратная сторона */
+.heart-back {
+    transform: rotateY(180deg) rotate(-45deg); /* Переворачиваем обратную сторону */
+}
+
+/* Контент внутри сердечка */
+.heart-content {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    text-align: center;
+    z-index: 2;
+    width: 80%; /* Ограничиваем ширину текста */
+}
+
+/* Текст на обратной стороне */
+.heart-back .heart-content {
+    font-size: 0.8em; /* Уменьшаем размер текста */
+}
+
+h1 {
+    font-family: 'Great Vibes', cursive; /* Красивый рукописный шрифт */
+    font-size: 2.5em;
+    margin: 0;
+    color: #ffffff; /* Белый цвет текста */
+    text-shadow: 
+        2px 2px 4px rgba(255, 0, 0, 0.8), /* Красная тень */
+        0 0 10px rgba(255, 255, 255, 0.8); /* Белая свечение */
+    animation: sway 3s ease-in-out infinite; /* Анимация извилистости */
+}
+
+p {
+    font-family: 'Dancing Script', cursive; /* Другой рукописный шрифт */
+    font-size: 1.8em;
+    margin: 0;
+    color: #ffffff; /* Белый цвет текста */
+    text-shadow: 
+        1px 1px 2px rgba(255, 0, 0, 0.8), /* Красная тень */
+        0 0 10px rgba(255, 255, 255, 0.8); /* Белая свечение */
+    animation: sway 3s ease-in-out infinite; /* Анимация извилистости */
+}
+
+/* Анимация сердцебиения */
+@keyframes heartbeat {
+    0%, 100% { transform: rotate(-45deg) scale(1); }
+    50% { transform: rotate(-45deg) scale(1.05); }
+}
+
+/* Анимация извилистости текста */
+@keyframes sway {
+    0%, 100% { transform: rotate(-2deg); }
+    50% { transform: rotate(2deg); }
+}
+
+/* Кнопки */
+.buttons {
+    margin-top: 200px; /* Поднимаем кнопки выше */
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff;
+    background: #ff6f61;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 111, 97, 0.4);
+}
+
+button:hover {
+    background: #ff4a3d;
+    transform: scale(1.1);
+}
+
+/* Летающие сердечки */
+.heart {
+    position: fixed;
+    color: #ff1493;
+    font-size: 30px;
+    animation: float 5s ease-in-out forwards;
+    pointer-events: none;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    50% { transform: translateX(100px) rotate(180deg); }
+    100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+}
+
+/* Анимация переворота */
+.heart-shape.flipped {
+    transform: rotateY(180deg);
+}
