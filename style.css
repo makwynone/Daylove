@@ -153,19 +153,28 @@ button:hover {
     transform: scale(1.1);
 }
 
-/* Летающие сердечки */
-.heart {
+/* Стили для маленьких сердечек */
+.floating-heart {
     position: fixed;
-    color: #ff1493;
-    font-size: 30px;
-    animation: float 5s ease-in-out forwards;
-    pointer-events: none;
+    font-size: 24px; /* Размер сердечка */
+    color: #ff1493; /* Цвет сердечка */
+    animation: float 4s ease-in-out forwards; /* Анимация плавания */
+    pointer-events: none; /* Чтобы сердечки не мешали кликам */
 }
 
+/* Анимация плавания */
 @keyframes float {
-    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-    50% { transform: translateX(100px) rotate(180deg); }
-    100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(100px) rotate(180deg);
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
 }
 
 /* Анимация переворота */
